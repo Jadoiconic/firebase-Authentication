@@ -3,8 +3,7 @@ import { Signup } from "./components/Signup";
 import { Account } from "./components/Account";
 import { Sigin } from "./components/Sigin";
 import NavBar from "./components/NavBar";
-import { AuthContextProvider } from "./context/AuthCintext";
-import ProtectedRoute from "./components/ProtectedRoute";
+import { AuthContextProvider, UserAuth } from "./context/AuthCintext";
 
 
 export default function App() {
@@ -16,7 +15,7 @@ export default function App() {
           <Route path="/" element={<Sigin />} />
           <Route path="/signup" element={<Signup />} />
           <Route path="/account" element={
-            <ProtectedRoute><Account /></ProtectedRoute>
+            <Account />
           } />
         </Routes>
       </AuthContextProvider>
