@@ -1,7 +1,7 @@
 import { async } from '@firebase/util'
 import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthCintext'
 
 export const Signup = () => {
@@ -10,11 +10,13 @@ export const Signup = () => {
     const [error, setError] = useState('')
 
     const { createUser } = UserAuth()
+    const navigate = useNavigate()
     const handleSubmit = async(e) =>{
         e.preventDefault()
         setError('')
         try {
             await createUser(email,password)
+            navigate('/account')
         } catch (e) {
             setError(e.message)
             console.log(e.message)
@@ -40,7 +42,7 @@ export const Signup = () => {
           <input className='border p-3 outline-none' onChange={e=>setPassword(e.target.value)} type="password" />
         </div>
         <button
-        className='border border-blue-500 bg-blue-600 hover:bg-blue-500 w-full p-4 text-white'>Sign Up</button>
+        className='border border-blue-500 bg-blue-600 hover:bg-blue-500 active:text-red-600 font-bold w-full p-4 text-white'>Sign Up</button>
       </form>
     </div>
   </div>
