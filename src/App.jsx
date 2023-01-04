@@ -4,6 +4,7 @@ import { Account } from "./components/Account";
 import { Sigin } from "./components/Sigin";
 import NavBar from "./components/NavBar";
 import { AuthContextProvider } from "./context/AuthCintext";
+import ProtectedRoute from "./components/ProtectedRoute";
 
 
 export default function App() {
@@ -14,7 +15,9 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Sigin />} />
           <Route path="/signup" element={<Signup />} />
-          <Route path="/account" element={<Account />} />
+          <Route path="/account" element={
+            <ProtectedRoute><Account /></ProtectedRoute>
+          } />
         </Routes>
       </AuthContextProvider>
     </div>

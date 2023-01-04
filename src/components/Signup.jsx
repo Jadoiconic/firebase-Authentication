@@ -1,5 +1,3 @@
-import { async } from '@firebase/util'
-import { createUserWithEmailAndPassword } from 'firebase/auth'
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthCintext'
@@ -26,6 +24,7 @@ export const Signup = () => {
   return (
     <div className='h-screen bg-gradient-to-r py-10 from-blue-500 to-purple-700'>
     <div className='max-w-[700px] mx-auto py-16 p-4 rounded bg-white'>
+        {error && <div className='text-2xl text-red-700'> something went Wrong {error}</div>}
       <div>
       <h1 className='text-2xl font-bold py-2'>Create New Account</h1>
       <p className='py-2'>

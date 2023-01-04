@@ -15,10 +15,14 @@ export const AuthContextProvider = ({ children }) => {
     const createUser = (email, password) => {
         return createUserWithEmailAndPassword(auth, email, password)
     }
+    const login = (email, password) => {
+        return signInWithEmailAndPassword(auth,email,password)
+    }
 
     const logout = () =>{
         signOut(auth)
     }
+
 
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (currentUser) =>{
@@ -28,9 +32,9 @@ export const AuthContextProvider = ({ children }) => {
         return () => {
             unsubscribe();
         }
-    })
+    },[])
     return (
-        <AuthContext.Provider value={{ createUser, user, logout }}>
+        <AuthContext.Provider value={{ createUser, user, logout, login }}>
             {children}
         </AuthContext.Provider>
     )

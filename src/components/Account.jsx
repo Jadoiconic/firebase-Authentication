@@ -1,7 +1,6 @@
 import React from 'react'
 import { useNavigate } from 'react-router-dom'
 import { UserAuth } from '../context/AuthCintext'
-import { auth } from '../firebase'
 
 export const Account = () => {
   const { user, logout } = UserAuth()
